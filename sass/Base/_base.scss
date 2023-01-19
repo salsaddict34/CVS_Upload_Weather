@@ -1,0 +1,20 @@
+//Import variables
+@use '../Utils/body_variables' as var;
+
+/*#############################################################*/
+/*#################### General statements ####################*/
+/*###########################################################*/
+
+html,
+body {
+  margin: 0;
+  background: var.$body_color;
+  font-family: var.$body_font_family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.upload {
+  display: none;
+  z-index: 999;
+}
