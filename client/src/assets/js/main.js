@@ -7,7 +7,6 @@ async function fetchCityWeather(city) {
     //Get data from api
     let res = await fetch(url);
     let cityWeather = await res.json();
-    console.log(cityWeather);
 
     //Generate HTML render
     cityElement = createCityElement(cityWeather);
@@ -96,5 +95,7 @@ function deleteCity(city) {
     let cities = JSON.parse(localStorage.getItem('cities'));
     cities = cities.filter(item => item.ville !== city);
     localStorage.setItem('cities', JSON.stringify(cities));
+    $('#addCity').val("");
+    location.reload();
     return true;
 }

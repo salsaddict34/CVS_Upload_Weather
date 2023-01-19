@@ -7,8 +7,11 @@
     $(document).ready(function() {
         refreshFromLocalStorage();
         $('.tableW').DataTable();
-        let city = $('#addCity').val();
-        $('#btn').on('click', fetchCityWeather(city));
+        $('#btn').on('click', function(event) {
+            fetchCityWeather($('#addCity').val());
+            $('#addCity').val("");
+            event.preventDefault();
+        });
     });
 </script>
 
