@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php include "../assets/html/head.html" ?>
-
-<script>
-    $(document).ready(function() {
-        refreshFromLocalStorage();
-        $('.tableW').DataTable();
-        $('#btn').on('click', function(event) {
-            fetchCityWeather($('#addCity').val());
-            $('#addCity').val("");
-            event.preventDefault();
-        });
-    });
-</script>
+<head>
+    <?php include "../assets/html/head.html" ?>
+    <script type="module" src="../../../dist/bundle.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
 
 <body>
     <div class="container">

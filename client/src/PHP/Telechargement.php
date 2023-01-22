@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php include "../assets/html/head.html" ?>
+<head>
+    <?php include "../assets/html/head.html" ?>
+    <script type="module" src="../../../dist/bundle.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+</head>
 
 <!--JQuery et Ajax pour fonction PHP-->
 <script>

@@ -1,0 +1,32 @@
+/*!*********************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./client/src/assets/css/style.css ***!
+  \*********************************************************************************************************************************************************/
+/*#############################################################*/
+/*#################### General statements ####################*/
+/*###########################################################*/
+html,
+body {
+  margin: 0;
+  background: -webkit-gradient(linear, left top, right top, from(rgb(111, 144, 189)), color-stop(53%, rgb(134, 149, 205)));
+  background: linear-gradient(90deg, rgb(111, 144, 189) 0%, rgb(134, 149, 205) 53%);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translateX(20px);
+      -ms-transform: translateX(20px);
+          transform: translateX(20px);
+}
+
+.upload {
+  display: none;
+  z-index: 999;
+}
+
+/*#############################################################*/
+/*########################## Header ##########################*/
+/*###########################################################*/
+/*#############################################################*/
+/*########################## Footer ##########################*/
+/*###########################################################*//*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=main.css.map*/

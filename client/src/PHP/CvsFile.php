@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php include "../assets/html/head.html" ?>
+<head>
+    <?php include "../assets/html/head.html" ?>
+    <script type="module" src="../../../dist/bundle.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
+</head>
 
 <!--JQuery et Ajax pour fonction PHP-->
 <script type="text/javascript">
@@ -60,7 +73,12 @@
 
 <script>
     $(document).ready(function() {
-        $('#table_id').DataTable();
+        $('#table_id').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
     });
 </script>
 
@@ -71,31 +89,31 @@
         <!-- Tableau -->
         <div class="sectionFormText mt-5">
             <table id="table_id" class="display">
+                <?php
+                $url = "/var/www/private/AFPA-CDA/PHP_XDEBUG/client/src/assets/files/data.csv";
+                $persons = array();
+                if (file_exists($url)) {
+                    $file = fopen($url, 'rb');
+                }
+                while (feof($file) != true) {
+                    $buffer = fgets($file);
+                    $header = explode("/", $buffer);
+                    $temp = explode(";", $header[1]);
+                }
+                fclose($file);
+                $param = explode(",", $header[0]);
+                ?>
+                <thead>
+                    <tr class="table-primary">
+                        <?php
+                        foreach ($param as $value) {
+                            echo ("<th>$value</th>");
+                        }
+                        ?>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    <?php
-                    $url = "/var/www/private/AFPA-CDA/PHP_XDEBUG/client/src/assets/files/data.csv";
-                    $persons = array();
-                    if (file_exists($url)) {
-                        $file = fopen($url, 'rb');
-                    }
-                    while (feof($file) != true) {
-                        $buffer = fgets($file);
-                        $header = explode("/", $buffer);
-                        $temp = explode(";", $header[1]);
-                    }
-                    fclose($file);
-                    $param = explode(",", $header[0]);
-                    ?>
-                    <thead>
-                        <tr class="table-primary">
-                            <?php
-                            foreach ($param as $value) {
-                                echo ("<th>$value</th>");
-                            }
-                            ?>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
                     <?php
                     for ($i = 0; $i < count($temp); $i++) {
                         $persons[$i] = explode(",", $temp[$i]);

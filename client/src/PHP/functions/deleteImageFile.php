@@ -3,8 +3,9 @@ function deleteImageFile()
 {
     if (isset($_POST['file'])) {
         $url = $_POST['file'];
-        $target = $url[0] . "/" . $url[1];
+        $target = '../' . implode("/", $url);
         if (file_exists($target)) {
+            var_dump($target);
             unlink($target);
             $msg = "Fichier supprimé.";
         } else {
